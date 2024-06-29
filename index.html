@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Vesper+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/split-type"></script>
+</head>
+<body class="bg-[#e4ecfa] w-full overflow-x-clip ">
+    <div>
+    <header class="demoheader fixed w-full z-50 bg-[#e4ecfa]">
+        <nav class="h-20 flex justify-between max-w-screen-xl mx-auto pl-4 pr-4">
+            <div class="flex justify-between items-center">
+                <i class="fa-solid fa-hospital text-[#3c5bc7] pt-0.5 text-xl"></i>
+                <p class="text-[#3c5bc7] text-xl pl-2 pt-2">MediPoint</p>
+            </div>
+            <div class="flex items-center">
+                <ul class="flex text-gray-800 text-xl gap-12">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="medicines.html">Medicines</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#Discount">Discount</a></li>
+                    <li><a href="#Essentials">Essentials</a></li>
+                </ul>
+                <ul class="flex text-gray-800 text-xl">
+                    <li><i class="search-box fa-solid fa-magnifying-glass pl-16"></i></li>
+                    <li><i class="login-box fa-regular fa-user pl-4"></i></li>
+                    <li><i class="fa-solid fa-phone pl-4"></i></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+
+
+    <div class="flex items-center h-[calc(110vh-1rem)]  w-full max-w-screen-xl mx-auto pl-6" id="home">
+        <div class="w-[70%]"> 
+            <h1 class="text-6xl">Browse &</h1>
+            <h1 class="justify-center text-6xl pt-2 w-[100%] ">Select Medicines</h1>
+            <p class="text-lg text-gray-800 pt-4 pb-12 ">Find the best medicines from the best brands,<br>
+                explore hundreds of medicines with all possible<br>
+                categories, take advantage of the 20% discount and<br>
+                much more.
+            </p>
+            <button class="p-2 bg-[#3c5bc7] text-white "><a href="">Explore Now</a></button>
+        </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/images2.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/images3.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/images4.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/images1.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/images.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/images5.jpeg" />
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    
+    <div class="search-overlay duration-500 ease-out transition fixed bg-[#3c5bc7]/5 backdrop-blur-lg w-full h-full top-0 left-0 z-40 opacity-0 pointer-events-none"></div>
+
+    <div class="duration-500 ease-out transition popup-search fixed w-full h-full top-20 left-0 z-50 translate-x-full opacity-0">
+        <div class="flex justify-center">
+            <button class="close-button"><i class="ri-close-line text-3xl duration-500 ease-out transition"></i></button>
+        </div>
+        <div class="flex justify-center align-center pt-10">
+            <input type="file" id="uploadBtn" class="hidden">
+            <label for="uploadBtn" class="p-2 bg-[#3c5bc7] text-white cursor-pointer"><i class="fa-solid fa-upload"></i> Upload File</label>
+            <input type="search" id="searchInput" class="duration-500 ease-out transition flex px-4 py-2" placeholder="Search for medicines...">
+            <button type="submit" id="searchButton" class="duration-500 ease-out transition bg-[#3c5bc7] text-white px-4 py-2 border-none">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </button>
+        </div>
+        <div id="searchResults" class="carousel-inner mx-auto flex justify-center mt-16 gap-4"></div>
+    </div>
+    
+    <div class="duration-500 ease-out transition login-popup fixed w-full h-full top-20 left-0 z-50 translate-x-full opacity-0">
+        <div class="flex justify-center">
+            <button class="close-button2"><i class="ri-close-line text-3xl duration-500 ease-out transition"></i></button>
+        </div>
+        
+            <div class="flex flex-col justify-center items-center px-3 mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 px-3 max-w-80 mx-auto">
+                <h1 class="text-3xl mb-4">Log In</h1>
+                <div>
+                    <h1>Email</h1>
+                    <input type="text" id="username" class="duration-500 ease-out transition flex px-4 py-2 mb-4 border border-gray-300" placeholder="Enter your Email">
+                </div>
+                <div>
+                    <h1>Password</h1>
+                    <input type="password" id="password" class="duration-500 ease-out transition flex px-4 py-2 mb-4 border border-gray-300" placeholder="Enter your Password">
+                </div>
+                <p class="text-[13px] mb-1">You do not have an account? <button class="text-[#3c5bc7]">SignUp</button></p>
+                <button class="text-[13px] mb-4 text-[#3c5bc7] mb-2">forgot your password? </button>
+                
+
+                <button class="px-[34%] py-2 bg-[#3c5bc7] text-white">Log In</button>
+            </div>
+       
+    </div>
+
+
+    <div class=" max-w-screen-xl mx-auto relative overflow-x-clip scroll-mt-24 " id="offers">
+        <div class="flex justify-center  mb-8">
+            <h1 class=" text-4xl font-bold">Exciting Offers</h1>
+        </div>
+        <div class="hidden2 flex overflow-hidden relative mx-auto" id="slider-container">
+            <!-- Product Cards -->
+            <div class="carousel-inner mx-auto flex justify-between" id="slider">
+                <!-- Individual Product Card -->
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900 card">
+                    <img src="images/sugar free.jpg" alt="sugar free" class="max-h-44" >
+                    <h1 class="text-xl pt-3 font-bold product-name">Sugar Free</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$3</p>
+                        <p class="line-through text-gray-500 text-lg">$5</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/mothers horlicks.jpg" alt="mothers horlicks" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Mothers Horlicks</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/ensure.jpg" alt="ensure" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Diabetic care</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$18</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/whey.jpg" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-20 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/isolate.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                
+            </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="prev"><i class="ri-arrow-left-s-line"></i></button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="next"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+
+    <div class="w-[40%] my-[8%] flex mx-auto justify-between " >
+        <div class="flex flex-col items-center border " >
+            <i class="ri-truck-line pb-4 text-5xl text-[#3c5bc7]"></i>
+            <h1 class="text-xl text-gray-900">Free Shipping</h1>
+            <h1 class="text-sm text-gray-800"> Order More Than $100</h1>
+        </div>
+        <div class="flex flex-col items-center border " >
+            <i class="ri-lock-2-line pb-4 text-5xl text-[#3c5bc7]"></i>
+            <h1 class="text-xl text-gray-900">Secure Payment</h1>
+            <h1 class="text-sm text-gray-800 "> 100% Secure Payment</h1>
+        </div>
+        <div class="flex flex-col items-center border " >
+            <i class="ri-customer-service-2-line pb-4 text-5xl text-[#3c5bc7]"></i>
+            <h1 class="text-xl">24/7 Support</h1>
+            <h1 class="text-sm text-gray-800">Call us anytime</h1>
+        </div>
+
+    </div>
+    
+    <div class="max-w-screen-xl mt-[8%] mx-auto h-96 scroll-mt-32 pl-16" id="Discount">
+        <div class="flex justify-between  my-[2%]">
+            <section class="flex mx-auto my-[2%] pl-16">
+                <img src="images/whey.jpg " alt="facewash" class=" h-[30%] rotate-45 hover:rotate-0 h-[60%]">
+                <img src="images/isolate.png" alt="sunscreen" class="h-[30%] rotate-[320deg] hover:rotate-0 h-[60%] " > 
+                <section class="hidden1 py-auto w-full flex flex-col justify-center items-center h-[60%] ">
+                    <h1 class="font-bold text-5xl pb-2 animate " id="text">Up To 20% Discount</h1>
+                    <p class="text-gray-800 animate text-lg">Take advantage of the discount days we have for you,the more you buy,</p>
+                    <p class="pb-8 text-gray-800 animate text-lg">the more the discounts we have for you.</p>
+                    <button class="p-2 bg-[#3c5bc7] text-white animate text-lg" id="Essentials"><a href="">Explore Now</a></button>
+                </section>
+            </section>
+        </div>
+    </div>
+    
+    <div class="hidden3 my-[7%] max-w-screen-xl mx-auto scroll-my-[100%]" >
+        <div class=" hidden3 flex justify-center ">
+            <h1 class=" text-4xl font-bold  "  id="Essentials">Essentials</h1>
+        </div>
+        <div class=" mx-auto flex justify-between pl-8">
+            <div class="flex justify-center mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 pr-8 ">
+                <img src="images/thermometer.jpg" alt="thermometer" class="h-60">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Thermometer</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8">Add To Cart</h1>
+                </div>
+            </div>
+            <div class="flex justify-center mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 pr-8">
+                <img src="images/bandage.jpg" alt="thermometer" class="h-60">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Bandage</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8">Add To Cart</h1>
+                </div>
+            </div>
+            <div class="flex justify-center mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 pr-8">
+                <img src="images/Dettol.png" alt="thermometer" class="h-56">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Dettol</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$7</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$12</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8">Add To Cart</h1>
+                </div>
+            </div>
+        </div>
+        <div class=" mx-auto flex justify-between pl-8">
+            <div class="flex justify-center mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 pr-8">
+                <img src="images/whisper.png" alt="thermometer" class="h-60">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Whisper Pads</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$3</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$9</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8">Add To Cart</h1>
+                </div>
+            </div>
+            <div class="flex justify-center px-auto mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 px-3">
+                <img src="images/listerine.jpg" alt="thermometer" class="h-60">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Listerine</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8 ml-2">Add To Cart</h1>
+                </div>
+            </div>
+            <div class="flex justify-center mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 pr-8">
+                <img src="images/bandage1.jpg" alt="thermometer" class="h-56">
+                <div class="flex flex-col justify-center items-center ">
+                    <h1 class="pr-8 font-bold text-xl">Bandage</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$6</p>
+                        <p class="line-through text-gray-500 pr-8 text-lg">$12</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer mr-8">Add To Cart</h1>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+        <footer class="my-[7%] max-w-screen-xl mx-auto pl-8 flex ">
+            <div class="mr-60">
+                <div>
+                    <h1 class="text-2xl font-bold text-[#3c5bc7] pb-4"><i class="fa-solid fa-hospital text-[#3c5bc7] pt-0.5"></i> MediPoint</h1>
+                    <p class="text-gray-700">Find and explore the best Medicines from<br> the best Companies all around the globe</p>
+                </div>
+            </div>
+            <div class="flex justify-between ">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> About</h1>
+                    <p class="pb-4 text-gray-700">Awards </p> 
+                    <p class="pb-4 text-gray-700">FAQs</p> 
+                    <p class="pb-4 text-gray-700">Privacy policy</p> 
+                    <p class="pb-4 text-gray-700"> Terms of Service</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> Company</h1>
+                    <p class="pb-4 text-gray-700">Blogs </p> 
+                    <p class="pb-4 text-gray-700">Community</p> 
+                    <p class="pb-4 text-gray-700">Our Team</p> 
+                    <p class="pb-4 text-gray-700">Help center</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> For More Info</h1>
+                    <p class="pb-4 text-gray-700">gopalakrishnan6825@gmail.com </p>
+                    <p class="text-gray-700">jyoshikashri.k@gmail.com</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> Social</h1>
+                    <div class="flex justify-between text-2xl gap-2">
+                        <i class="ri-facebook-circle-line text-2xl text-[#3c5bc7]"></i>
+                        <i class="ri-instagram-line text-2xl text-[#3c5bc7]"></i>
+                        <i class="ri-messenger-line text-[#3c5bc7]"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="flex justify-center mb-8">
+            <p class="text-gray-700">&#169; All Rights Reserved By MediPoint</p>
+        </div>
+    </div>
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

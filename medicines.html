@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Vesper+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/split-type"></script>
+</head>
+    <body class="bg-[#e4ecfa] w-full overflow-x-clip ">
+        <div>
+        <header class="demoheader fixed w-full z-50 bg-[#e4ecfa]">
+            <nav class="h-20 flex justify-between max-w-screen-xl mx-auto  pr-4">
+                <div class="flex justify-between items-center">
+                    <i class="fa-solid fa-hospital text-[#3c5bc7] pt-0.5 text-xl"></i>
+                    <p class="text-[#3c5bc7] text-xl pl-2 pt-2">MediPoint</p>
+                </div>
+                <div class="flex items-center">
+                    <ul class="flex text-gray-800 text-xl gap-12">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Medicines</a></li>
+                        <li><a href="index.html#offers">Offers</a></li>
+                        <li><a href="index.html#Discount">Discount</a></li>
+                        <li><a href="index.html#Essentials">Essentials</a></li>
+                    </ul>
+                    <ul class="flex text-gray-800 text-xl">
+                        <li><i class="search-box fa-solid fa-magnifying-glass pl-16"></i></li>
+                        <li><i class="login-box fa-regular fa-user pl-4"></i></li>
+                        <li><i class="fa-solid fa-phone pl-4"></i></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="search-overlay duration-500 ease-out transition fixed bg-[#3c5bc7]/5 backdrop-blur-lg w-full h-full top-0 left-0 z-40 opacity-0 pointer-events-none"></div>
+
+    <div class="duration-500 ease-out transition popup-search fixed w-full h-full top-20 left-0 z-50 translate-x-full opacity-0">
+        <div class="flex justify-center">
+            <button class="close-button"><i class="ri-close-line text-3xl duration-500 ease-out transition"></i></button>
+        </div>
+        <div class="flex justify-center align-center pt-10">
+            <input type="file" id="uploadBtn" class="hidden">
+            <label for="uploadBtn" class="p-2 bg-[#3c5bc7] text-white cursor-pointer"><i class="fa-solid fa-upload"></i> Upload File</label>
+            <input type="search" id="searchInput" class="duration-500 ease-out transition flex px-4 py-2" placeholder="Search for medicines...">
+            <button type="submit" id="searchButton" class="duration-500 ease-out transition bg-[#3c5bc7] text-white px-4 py-2 border-none">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </button>
+        </div>
+        <div id="searchResults" class="carousel-inner mx-auto flex justify-center mt-16 gap-4"></div>
+    </div>
+    
+    <div class="duration-500 ease-out transition login-popup fixed w-full h-full top-20 left-0 z-50 translate-x-full opacity-0">
+        <div class="flex justify-center">
+            <button class="close-button2"><i class="ri-close-line text-3xl duration-500 ease-out transition"></i></button>
+        </div>
+        
+            <div class="flex flex-col justify-center items-center px-3 mt-[3%] shadow-xl border border-gray-300 bg-[#edf1fa] py-4 px-3 max-w-80 mx-auto">
+                <h1 class="text-3xl mb-4">Log In</h1>
+                <div>
+                    <h1>Email</h1>
+                    <input type="text" id="username" class="duration-500 ease-out transition flex px-4 py-2 mb-4 border border-gray-300" placeholder="Enter your Email">
+                </div>
+                <div>
+                    <h1>Password</h1>
+                    <input type="password" id="password" class="duration-500 ease-out transition flex px-4 py-2 mb-4 border border-gray-300" placeholder="Enter your Password">
+                </div>
+                <p class="text-[13px] mb-1">You do not have an account? <button class="text-[#3c5bc7]">SignUp</button></p>
+                <button class="text-[13px] mb-4 text-[#3c5bc7] mb-2">forgot your password? </button>
+                
+
+                <button class="px-[34%] py-2 bg-[#3c5bc7] text-white">Log In</button>
+            </div>
+       
+    </div>
+
+
+    <div class=" max-w-screen-xl mx-auto relative overflow-x-clip scroll-mt-24 " id="offers">
+        <div class="flex  mb-3 pt-24">
+            <h1 class=" text-2xl font-bold">Exciting Offers</h1>
+        </div>
+        <div class="hidden2 flex overflow-hidden relative mx-auto" id="slider-container">
+            <!-- Product Cards -->
+            <div class="carousel-inner mx-auto flex justify-between" id="slider">
+                <!-- Individual Product Card -->
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900 card">
+                    <img src="images/sugar free.jpg" alt="sugar free" class="max-h-44" >
+                    <h1 class="text-xl pt-3 font-bold product-name">Sugar Free</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$3</p>
+                        <p class="line-through text-gray-500 text-lg">$5</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/mothers horlicks.jpg" alt="mothers horlicks" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Mothers Horlicks</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/ensure.jpg" alt="ensure" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Diabetic care</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$18</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/whey.jpg" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-20 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/isolate.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                
+            </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="prev"><i class="ri-arrow-left-s-line"></i></button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="next"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+
+    <div class=" max-w-screen-xl mx-auto relative overflow-x-clip scroll-mt-24 " id="offers">
+        <div class="flex  mb-3 pt-24">
+            <h1 class=" text-2xl font-bold">Women Essentials</h1>
+        </div>
+        <div class="hidden2 flex overflow-hidden relative mx-auto" id="slider-container">
+            <!-- Product Cards -->
+            <div class="carousel-inner mx-auto flex justify-between" id="slider">
+                <!-- Individual Product Card -->
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900 card">
+                    <img src="images/pads.png" alt="pads" class="max-h-44" >
+                    <h1 class="text-xl pt-3 font-bold product-name">Pads</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$3</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/mothers horlicks.jpg" alt="mothers horlicks" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Mothers Horlicks</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/multivitamin.png" alt="ensure" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Multivitamin</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$18</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/iron.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">iron tonic</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-20 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/isolate.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                
+            </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="prev"><i class="ri-arrow-left-s-line"></i></button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="next"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+
+    <div class=" max-w-screen-xl mx-auto relative overflow-x-clip scroll-mt-24 " id="offers">
+        <div class="flex  mb-3 pt-24">
+            <h1 class=" text-2xl font-bold">Headache Medicines</h1>
+        </div>
+        <div class="hidden2 flex overflow-hidden relative mx-auto" id="slider-container">
+            <!-- Product Cards -->
+            <div class="carousel-inner mx-auto flex justify-between" id="slider">
+                <!-- Individual Product Card -->
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900 card">
+                    <img src="images/combiflam.png" alt="sugar free" class="max-h-44" >
+                    <h1 class="text-xl pt-3 font-bold product-name">Combiflam</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$3</p>
+                        <p class="line-through text-gray-500 text-lg">$5</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-4 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/go mygraine.png" alt="mothers horlicks" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Go mygraine</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$5</p>
+                        <p class="line-through text-gray-500 text-lg">$8</p>
+                    </div>
+                    <h1 class="my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/cabinet.png" alt="ensure" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Cabinet</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$18</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-16 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/ritza.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Ritza</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                <div class="carousel-item flex flex-col border border-gray-300 items-center shadow-xl bg-[#edf1fa] py-4 px-20 border border-gray-300 mr-4 hover:border-gray-900">
+                    <img src="images/isolate.png" alt="whey protein" class="max-h-44">
+                    <h1 class="text-xl pt-3 font-bold">Whey Protein</h1>
+                    <div class="flex justify-center">
+                        <p class="pr-2 text-lg">$10</p>
+                        <p class="line-through text-gray-500 text-lg">$15</p>
+                    </div>
+                    <h1 class=" my-3 p-2 bg-[#3c5bc7] text-white cursor-pointer">Add To Cart</h1>
+                </div>
+                
+            </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="prev"><i class="ri-arrow-left-s-line"></i></button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 text-4xl text-[#3c5bc7] px-3 py-2" id="next"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+
+    
+
+
+ 
+        
+    </div>
+    <div>
+        <footer class="my-[7%] max-w-screen-xl mx-auto pl-8 flex ">
+            <div class="mr-60">
+                <div>
+                    <h1 class="text-2xl font-bold text-[#3c5bc7] pb-4"><i class="fa-solid fa-hospital text-[#3c5bc7] pt-0.5"></i> MediPoint</h1>
+                    <p class="text-gray-700">Find and explore the best Medicines from<br> the best Companies all around the globe</p>
+                </div>
+            </div>
+            <div class="flex justify-between ">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> About</h1>
+                    <p class="pb-4 text-gray-700">Awards </p> 
+                    <p class="pb-4 text-gray-700">FAQs</p> 
+                    <p class="pb-4 text-gray-700">Privacy policy</p> 
+                    <p class="pb-4 text-gray-700"> Terms of Service</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> Company</h1>
+                    <p class="pb-4 text-gray-700">Blogs </p> 
+                    <p class="pb-4 text-gray-700">Community</p> 
+                    <p class="pb-4 text-gray-700">Our Team</p> 
+                    <p class="pb-4 text-gray-700">Help center</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> For More Info</h1>
+                    <p class="pb-4 text-gray-700">gopalakrishnan6825@gmail.com </p>
+                    <p class="text-gray-700">jyoshikashri.k@gmail.com</p>
+                </div>
+                <div class="pl-16">
+                    <h1 class="text-2xl font-bold text-gray-900 pb-4"> Social</h1>
+                    <div class="flex justify-between text-2xl gap-2">
+                        <i class="ri-facebook-circle-line text-2xl text-[#3c5bc7]"></i>
+                        <i class="ri-instagram-line text-2xl text-[#3c5bc7]"></i>
+                        <i class="ri-messenger-line text-[#3c5bc7]"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="flex justify-center mb-8">
+            <p class="text-gray-700">&#169; All Rights Reserved By MediPoint</p>
+        </div>
+    </div>
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
